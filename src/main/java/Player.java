@@ -1,5 +1,13 @@
 package com.company;
 
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+
+import java.io.*;
+import java.util.Iterator;
+
 /**
  * Created by franklong on 4/22/17.
  */
@@ -7,163 +15,223 @@ package com.company;
 //TODO make the hashmap of players, take in CSV here or somewhere else, make the getters and comparators
 public class Player {
 
-    //TODO CSV constructor?
-    public Player() {
+        //standard counting stats
+    //MP	FG	FGA	FG%	3P	3PA	3P%	2P	2PA	2P%	eFG%	FT	FTA	FT%	ORB	DRB	TRB	AST	STL	BLK	TOV	PF	PTS
+    public double MP;
+    public double FG;
+    public double FGA;
+    public double FGP;
+    public double threeP;
+    public double threePA;
+    public double threePP;
+    public double twoP;
+    public double twoPA;
+    public double twoPP;
+    public double eFG;
+    public double FT;
+    public double FTA;
+    public double FTP;
+    public double ORB;
+    public double DRB;
+    public double TRB;
+    public double AST;
+    public double STL;
+    public double BLK;
+    public double TOV;
+    public double PF;
+    public double PTS;
+
+    public Player()  {
     }
 
-    //standard counting stats
-    private double points;
-    private double rebounds;
-    private double assists;
-    private double blocks;
-    private double steals;
+    public Player (File f) throws IOException {
+        FileInputStream fis = new FileInputStream(f);
+        //Note smh this only works with 1997-2003 excel docs .xls
+        HSSFWorkbook workbook = new HSSFWorkbook(fis);
+        HSSFSheet sheet = workbook.getSheetAt(1);
+        Row row = sheet.getRow(0);
 
-    //percentages
-    private double fieldGoalPercentage;
-    private double threePointPercentage;
-    private double freeThrowPercentage;
+        Cell MPCell = row.getCell(0);
+        MP = MPCell.getNumericCellValue();
 
-    //makes
-    private int fieldGoalsMade;
-    private int threePointMade;
-    private int freeThrowMade;
+        Cell FGCell = row.getCell(1);
+        FG = FGCell.getNumericCellValue();
 
-    //attempts
-    private int fieldGoalAttempts;
-    private int threePointAttempts;
-    private int freeThrowGoalAttempts;
+        Cell FGACell = row.getCell(2);
+        FGA = FGACell.getNumericCellValue();
 
-    //negative stats
-    private double turnovers;
-    private double fouls;
+        Cell FGPCell = row.getCell(3);
+        FGP = FGPCell.getNumericCellValue();
 
-    //Getters
-    public double getPoints() {
-        return points;
+        Cell threePCell = row.getCell(4);
+        threeP = threePCell.getNumericCellValue();
+
+        Cell threePACell = row.getCell(5);
+        threePA = threePACell.getNumericCellValue();
+
+        Cell threePPCell = row.getCell(6);
+        threePP = threePPCell.getNumericCellValue();
+
+        Cell twoPCell = row.getCell(7);
+        twoP = twoPCell.getNumericCellValue();
+
+        Cell twoPACell = row.getCell(8);
+        twoPA = twoPACell.getNumericCellValue();
+
+        Cell twoPPCell = row.getCell(9);
+        twoPP = twoPPCell.getNumericCellValue();
+
+        Cell eFGCell = row.getCell(10);
+        eFG = eFGCell.getNumericCellValue();
+
+        Cell FTCell = row.getCell(11);
+        FT = FTCell.getNumericCellValue();
+
+        Cell FTACell = row.getCell(12);
+        FTA = FTACell.getNumericCellValue();
+
+        Cell FTPCell = row.getCell(13);
+        FTP = FTPCell.getNumericCellValue();
+
+        Cell ORBCell = row.getCell(14);
+        ORB = ORBCell.getNumericCellValue();
+
+        Cell DRBCell = row.getCell(15);
+        DRB = DRBCell.getNumericCellValue();
+
+        Cell TRBCell = row.getCell(16);
+        TRB = TRBCell.getNumericCellValue();
+
+        Cell ASTCell = row.getCell(17);
+        AST = ASTCell.getNumericCellValue();
+
+        Cell STLCell = row.getCell(18);
+        STL = STLCell.getNumericCellValue();
+
+        Cell BLKCell = row.getCell(19);
+        BLK = BLKCell.getNumericCellValue();
+
+        Cell TOVCell = row.getCell(20);
+        TOV = TOVCell.getNumericCellValue();
+
+        Cell PFCell = row.getCell(21);
+        PF = PFCell.getNumericCellValue();
+
+        Cell PTSCell = row.getCell(22);
+        PTS = PTSCell.getNumericCellValue();
+
     }
 
-    public double getRebounds() {
-        return rebounds;
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append("FG: ");
+        s.append(FG);
+        s.append(", ");
+
+        s.append("FGA: ");
+        s.append(FGA);
+        s.append(", ");
+
+        s.append("FGP: ");
+        s.append(FGP);
+        s.append(", ");
+
+        s.append("threeP: ");
+        s.append(threeP);
+        s.append(", ");
+
+        s.append("threePA: ");
+        s.append(threePA);
+        s.append(", ");
+
+        s.append("threePP: ");
+        s.append(threePP);
+        s.append(", ");
+
+        s.append("twoP: ");
+        s.append(twoP);
+        s.append(", ");
+
+        s.append("twoPA: ");
+        s.append(twoPA);
+        s.append(", ");
+
+        s.append("twoPP: ");
+        s.append(twoPP);
+        s.append(", ");
+
+        s.append("eFG: ");
+        s.append(eFG);
+        s.append(", ");
+
+        s.append("FT: ");
+        s.append(FT);
+        s.append(", ");
+
+        s.append("FTA: ");
+        s.append(FTA);
+        s.append(", ");
+
+        s.append("FTP: ");
+        s.append(FTP);
+        s.append(", ");
+
+        s.append("ORB: ");
+        s.append(ORB);
+        s.append(", ");
+
+        s.append("DRB: ");
+        s.append(DRB);
+        s.append(", ");
+
+        s.append("TRB: ");
+        s.append(TRB);
+        s.append(", ");
+
+        s.append("AST: ");
+        s.append(AST);
+        s.append(", ");
+
+        s.append("STL: ");
+        s.append(STL);
+        s.append(", ");
+
+        s.append("BLK: ");
+        s.append(BLK);
+        s.append(", ");
+
+        s.append("TOV: ");
+        s.append(TOV);
+        s.append(", ");
+
+        s.append("PF: ");
+        s.append(PF);
+        s.append(", ");
+
+        s.append("PTS: ");
+        s.append(PTS);
+        s.append(", ");
+
+        return s.toString();
     }
 
-    public double getAssists() {
-        return assists;
-    }
-
-    public double getBlocks() {
-        return blocks;
-    }
-
-    public double getSteals() {
-        return steals;
-    }
-
-    public double getFieldGoalPercentage() {
-        return fieldGoalPercentage;
-    }
-
-    public double getThreePointPercentage() {
-        return threePointPercentage;
-    }
-
-    public double getFreeThrowPercentage() {
-        return freeThrowPercentage;
-    }
-
-    public int getFieldGoalsMade() {
-        return fieldGoalsMade;
-    }
-
-    public int getThreePointMade() {
-        return threePointMade;
-    }
-
-    public int getFreeThrowMade() {
-        return freeThrowMade;
-    }
-
-    public int getFieldGoalAttempts() {
-        return fieldGoalAttempts;
-    }
-
-    public int getThreePointAttempts() {
-        return threePointAttempts;
-    }
-
-    public int getFreeThrowGoalAttempts() {
-        return freeThrowGoalAttempts;
-    }
-
-    public double getTurnovers() {
-        return turnovers;
-    }
-
-    public double getFouls() {
-        return fouls;
-    }
-
-    //Setters
-    public void setPoints(double points) {
-        this.points = points;
-    }
-
-    public void setRebounds(double rebounds) {
-        this.rebounds = rebounds;
-    }
-
-    public void setAssists(double assists) {
-        this.assists = assists;
-    }
-
-    public void setBlocks(double blocks) {
-        this.blocks = blocks;
-    }
-
-    public void setSteals(double steals) {
-        this.steals = steals;
-    }
-
-    public void setFieldGoalPercentage(double fieldGoalPercentage) {
-        this.fieldGoalPercentage = fieldGoalPercentage;
-    }
-
-    public void setThreePointPercentage(double threePointPercentage) {
-        this.threePointPercentage = threePointPercentage;
-    }
-
-    public void setFreeThrowPercentage(double freeThrowPercentage) {
-        this.freeThrowPercentage = freeThrowPercentage;
-    }
-
-    public void setFieldGoalsMade(int fieldGoalsMade) {
-        this.fieldGoalsMade = fieldGoalsMade;
-    }
-
-    public void setThreePointMade(int threePointMade) {
-        this.threePointMade = threePointMade;
-    }
-
-    public void setFreeThrowMade(int freeThrowMade) {
-        this.freeThrowMade = freeThrowMade;
-    }
-
-    public void setFieldGoalAttempts(int fieldGoalAttempts) {
-        this.fieldGoalAttempts = fieldGoalAttempts;
-    }
-
-    public void setThreePointAttempts(int threePointAttempts) {
-        this.threePointAttempts = threePointAttempts;
-    }
-
-    public void setFreeThrowGoalAttempts(int freeThrowGoalAttempts) {
-        this.freeThrowGoalAttempts = freeThrowGoalAttempts;
-    }
-
-    public void setTurnovers(double turnovers) {
-        this.turnovers = turnovers;
-    }
-
-    public void setFouls(double fouls) {
-        this.fouls = fouls;
-    }
+    //finish this
+//    public Player (File f) throws FileNotFoundException, IOException {
+//
+//        FileReader in = new FileReader(f);
+//        //Iterable<CSVRecord> records = CSVFormat.EXCEL.withHeader("Season", "Age", "Tm").parse(in);
+//        //CSVParser parser = CSVParser.parse(f, "lol", CSVFormat.EXCEL);
+//        for (CSVRecord csvRecord : parser) {
+//            String s = csvRecord.get("Season");
+//            System.out.println("Size" + csvRecord.size());
+//        }
+//        //System.out.println(in.toString());
+////        for (CSVRecord record : parser) {
+////            String s = record.get("Season");
+////            System.out.println("Size" + record.size());
+////            //System.out.println(s);
+//////            this.points = Double.parseDouble(record.get("PTS"));
+//////            System.out.println(points);
+////        }
+//        }
 }
