@@ -1,109 +1,175 @@
-//package com.company;
-//
-///**
-// * Created by franklong on 4/22/17.
-// */
-//public class Comparisons {
-//
-//    //TODO deal with equals case
-//
-//    //Basic stat comparisons
-//    public static Player pointsComparison(Player a, Player b) {
-//        Player winner = new Player();
-//        if(a.getPoints() > b.getPoints()) winner = a;
-//        else winner = b;
-//        return winner;
-//    }
-//
-//    public static Player reboundsComparison(Player a, Player b) {
-//        Player winner = new Player();
-//        if(a.getRebounds() > b.getRebounds()) winner = a;
-//        else winner = b;
-//        return winner;
-//    }
-//
-//    public static Player assistsComparison(Player a, Player b) {
-//        Player winner = new Player();
-//        if(a.getAssists() > b.getAssists()) winner = a;
-//        else winner = b;
-//        return winner;
-//    }
-//
-//    public static Player blocksComparison(Player a, Player b) {
-//        Player winner = new Player();
-//        if(a.getBlocks() > b.getBlocks()) winner = a;
-//        else winner = b;
-//        return winner;
-//    }
-//
-//    public static Player stealsComparison(Player a, Player b) {
-//        Player winner = new Player();
-//        if(a.getSteals() > b.getSteals()) winner = a;
-//        else winner = b;
-//        return winner;
-//    }
-//
-//    public static Player fieldGoalPercentageComparison(Player a, Player b) {
-//        Player winner = new Player();
-//        if(a.getFieldGoalPercentage() > b.getFieldGoalPercentage()) winner = a;
-//        else winner = b;
-//        return winner;
-//    }
-//
-//    public static Player threePointPercentageComparison(Player a, Player b) {
-//        Player winner = new Player();
-//        if(a.getThreePointPercentage() > b.getThreePointPercentage()) winner = a;
-//        else winner = b;
-//        return winner;
-//    }
-//
-//    public static Player fieldGoalAttemptsComparison(Player a, Player b) {
-//        Player winner = new Player();
-//        if(a.getFieldGoalAttempts() > b.getFieldGoalAttempts()) winner = a;
-//        else winner = b;
-//        return winner;
-//    }
-//
-//    public static Player threePointAttemptsComparison(Player a, Player b) {
-//        Player winner = new Player();
-//        if(a.getThreePointAttempts() > b.getFreeThrowGoalAttempts()) winner = a;
-//        else winner = b;
-//        return winner;
-//    }
-//
-//    public static Player freeThrowGoalAttemptsComparison(Player a, Player b) {
-//        Player winner = new Player();
-//        if(a.getFreeThrowGoalAttempts() > b.getFreeThrowGoalAttempts()) winner = a;
-//        else winner = b;
-//        return winner;
-//    }
-//
-//    public static Player turnoversComparison(Player a, Player b) {
-//        Player winner = new Player();
-//        if(a.getTurnovers() > b.getTurnovers()) winner = a;
-//        else winner = b;
-//        return winner;
-//    }
-//
-//    public static Player foulsComparison(Player a, Player b) {
-//        Player winner = new Player();
-//        if(a.getFouls() > b.getFouls()) winner = a;
-//        else winner = b;
-//        return winner;
-//    }
-//
-//    //more complex comparisons
-//
-//    //uses "effective field goal percentage" - (2pt FGM + 1.5 * 3pt FGM) / FGA
-//    public static Player effectiveFieldGoalComparison(Player a, Player b) {
-//        Player winner = new Player();
-//
-//        if(NBAHelpers.calculateEFG(a) > NBAHelpers.calculateEFG(b)) winner = a;
-//        else winner = b;
-//        return winner;
-//    }
-//
-//    //a generalized efficiency stat taking effective field goal percentage with other stats
+package com.company;
+
+/**
+ * Created by franklong on 4/22/17.
+ */
+public class Comparisons {
+    //TODO deal with equals case
+    //Basic stat comparisons
+    public static Player compareMP(Player a, Player b) {
+        Player winner;
+        if(a.MP > b.MP) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player compareFG(Player a, Player b) {
+        Player winner;
+        if(a.FG > b.FG) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player compareFGA(Player a, Player b) {
+        Player winner;
+        if(a.FGA > b.FGA) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player compareFGP(Player a, Player b) {
+        Player winner;
+        if(a.FGP > b.FGP) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player comparethreeP(Player a, Player b) {
+        Player winner;
+        if(a.threeP > b.threeP) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player comparethreePA(Player a, Player b) {
+        Player winner;
+        if(a.threePA > b.threePA) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player comparethreePP(Player a, Player b) {
+        Player winner;
+        if(a.threePP > b.threePP) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player comparetwoP(Player a, Player b) {
+        Player winner;
+        if(a.twoP > b.twoP) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player comparetwoPA(Player a, Player b) {
+        Player winner;
+        if(a.twoPA > b.twoPA) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player comparetwoPP(Player a, Player b) {
+        Player winner;
+        if(a.twoPP > b.twoPP) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player compareeFG(Player a, Player b) {
+        Player winner;
+        if(a.eFG > b.eFG) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player compareFT(Player a, Player b) {
+        Player winner;
+        if(a.FT > b.FT) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player compareFTA(Player a, Player b) {
+        Player winner;
+        if(a.FTA > b.FTA) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player compareFTP(Player a, Player b) {
+        Player winner;
+        if(a.FTP > b.FTP) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player compareORB(Player a, Player b) {
+        Player winner;
+        if(a.ORB > b.ORB) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player compareDRB(Player a, Player b) {
+        Player winner;
+        if(a.DRB > b.DRB) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player compareTRB(Player a, Player b) {
+        Player winner;
+        if(a.TRB > b.TRB) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player compareAST(Player a, Player b) {
+        Player winner;
+        if(a.AST > b.AST) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player compareSTL(Player a, Player b) {
+        Player winner;
+        if(a.STL > b.STL) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player compareBLK(Player a, Player b) {
+        Player winner;
+        if(a.BLK > b.BLK) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player compareTOV(Player a, Player b) {
+        Player winner;
+        if(a.TOV > b.TOV) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player comparePF(Player a, Player b) {
+        Player winner;
+        if(a.PF > b.PF) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    public static Player comparePTS(Player a, Player b) {
+        Player winner;
+        if(a.PTS > b.PTS) winner = a;
+        else winner = b;
+        return winner;
+    }
+
+    //more complex comparisons
+
+    //a generalized efficiency stat taking effective field goal percentage with other stats
 //    public static Player efficiencyComparison(Player a, Player b) {
 //        double aEfficiency = NBAHelpers.calculateEFG(a) * a.getFieldGoalAttempts()
 //                + 1.5 * a.getAssists() + .5 * a.getRebounds();
@@ -116,7 +182,7 @@
 //        else winner = b;
 //        return winner;
 //    }
-//
-//    //how many ____ would they get in ____ minutes?
-//
-//}
+
+    //how many ____ would they get in ____ minutes?
+
+}
