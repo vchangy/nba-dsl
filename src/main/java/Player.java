@@ -6,16 +6,22 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
 import java.io.*;
-import java.util.Iterator;
+import java.util.HashMap;
 
 /**
  * Created by franklong on 4/22/17.
  */
 
-//TODO make the hashmap of players, take in CSV here or somewhere else, make the getters and comparators
+//TODO "set up all the shit method" that creates Player objects make the hashmap of players, take in CSV here or somewhere else
 public class Player {
 
-        //standard counting stats
+    public enum Stats {
+        MP, FG, FGA, FGP, threeP, threePA, threePP, twoP, twoPA, twoPP, eFG, FT, FTA, FTP, ORB, DRB, TRB, AST, STL, BLK, TOV, PF, PTS
+    }
+
+    public String name;
+
+    //standard counting stats
     //MP	FG	FGA	FG%	3P	3PA	3P%	2P	2PA	2P%	eFG%	FT	FTA	FT%	ORB	DRB	TRB	AST	STL	BLK	TOV	PF	PTS
     public double MP;
     public double FG;
@@ -120,10 +126,16 @@ public class Player {
         Cell PTSCell = row.getCell(22);
         PTS = PTSCell.getNumericCellValue();
 
+        Cell NameCell = row.getCell(23);
+        name = NameCell.getStringCellValue();
     }
 
     public String toString() {
         StringBuilder s = new StringBuilder();
+
+        s.append(name);
+        s.append(": ");
+
         s.append("FG: ");
         s.append(FG);
         s.append(", ");
@@ -215,23 +227,14 @@ public class Player {
         return s.toString();
     }
 
-    //finish this
-//    public Player (File f) throws FileNotFoundException, IOException {
-//
-//        FileReader in = new FileReader(f);
-//        //Iterable<CSVRecord> records = CSVFormat.EXCEL.withHeader("Season", "Age", "Tm").parse(in);
-//        //CSVParser parser = CSVParser.parse(f, "lol", CSVFormat.EXCEL);
-//        for (CSVRecord csvRecord : parser) {
-//            String s = csvRecord.get("Season");
-//            System.out.println("Size" + csvRecord.size());
-//        }
-//        //System.out.println(in.toString());
-////        for (CSVRecord record : parser) {
-////            String s = record.get("Season");
-////            System.out.println("Size" + record.size());
-////            //System.out.println(s);
-//////            this.points = Double.parseDouble(record.get("PTS"));
-//////            System.out.println(points);
-////        }
-//        }
+    public static HashMap<String, Player> readInPlayers() throws IOException {
+        HashMap<String,Player> playerDatabase =new HashMap<String, Player>();
+        File resFolder = new File("./res");
+
+        for(File child : resFolder.listFiles()) {
+            Player p = new Player(child);
+            playerDatabase.put(p.name, p);
+        }
+        return playerDatabase;
+    }
 }

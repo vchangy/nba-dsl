@@ -4,185 +4,201 @@ package com.company;
  * Created by franklong on 4/22/17.
  */
 public class Comparisons {
-    //TODO deal with equals case
-    //Basic stat comparisons
-    public static Player compareMP(Player a, Player b) {
+    //TODO this is a less dumb version that I should probably figure out, still some jank but it works
+    public static Player compareBasicStat(Player a, Player b, String stat) throws IllegalArgumentException {
+        double aStat = 0;
+        double bStat = 0;
         Player winner;
-        if(a.MP > b.MP) winner = a;
+
+        if(stat.equals("PTS")) {
+            aStat = a.PTS;
+            bStat = b.PTS;
+        }
+
+        else if (stat.equals("MP")) {
+            aStat = a.MP;
+            bStat = b.MP;
+        }
+
+        else if (stat.equals("FG")) {
+            aStat = a.FG;
+            bStat = b.FG;
+        }
+
+        else if (stat.equals("FGA")) {
+            aStat = a.FGA;
+            bStat = b.FGA;
+        }
+
+        else if (stat.equals("FGP")) {
+            aStat = a.FGP;
+            bStat = b.FGP;
+        }
+
+        else if (stat.equals("threeP")) {
+            aStat = a.threeP;
+            bStat = b.threeP;
+        }
+
+        else if (stat.equals("threePA")) {
+            aStat = a.threePA;
+            bStat = b.threePA;
+        }
+
+        else if (stat.equals("threePP")) {
+            aStat = a.threePP;
+            bStat = b.threePP;
+        }
+
+        else if (stat.equals("twoP")) {
+            aStat = a.twoP;
+            bStat = b.twoP;
+        }
+
+        else if (stat.equals("twoPP")) {
+            aStat = a.twoPP;
+            bStat = b.twoPP;
+        }
+
+        else if (stat.equals("eFG")) {
+            aStat = a.eFG;
+            bStat = b.eFG;
+        }
+
+        else if (stat.equals("FT")) {
+            aStat = a.FT;
+            bStat = b.FT;
+        }
+
+        else if (stat.equals("FTA")) {
+            aStat = a.FTA;
+            bStat = b.FTA;
+        }
+
+        else if (stat.equals("FTP")) {
+            aStat = a.FTP;
+            bStat = b.FTP;
+        }
+
+        else if (stat.equals("ORB")) {
+            aStat = a.ORB;
+            bStat = b.ORB;
+        }
+
+        else if (stat.equals("DRB")) {
+            aStat = a.DRB;
+            bStat = b.DRB;
+        }
+
+        else if (stat.equals("TRB")) {
+            aStat = a.TRB;
+            bStat = b.TRB;
+        }
+
+        else if (stat.equals("AST")) {
+            aStat = a.AST;
+            bStat = b.AST;
+        }
+
+        else if (stat.equals("STL")) {
+            aStat = a.STL;
+            bStat = b.STL;
+        }
+
+        else if (stat.equals("BLK")) {
+            aStat = a.BLK;
+            bStat = b.BLK;
+        }
+
+        else if (stat.equals("TOV")) {
+            aStat = a.TOV;
+            bStat = b.TOV;
+        }
+
+        else if (stat.equals("PF")) {
+            aStat = a.PF;
+            bStat = b.PF;
+        }
+
+        else if (stat.equals("PTS")) {
+            aStat = a.PTS;
+            bStat = b.PTS;
+        }
+        else throw new IllegalArgumentException("not a supported stat");
+
+        if(aStat > bStat) winner = a;
         else winner = b;
-        return winner;
+        if (aStat != 0 && bStat != 0)return winner;
+        else return new Player();
     }
 
-    public static Player compareFG(Player a, Player b) {
-        Player winner;
-        if(a.FG > b.FG) winner = a;
-        else winner = b;
-        return winner;
+    //
+
+    //what if <Player> played X minutes, how many points?
+    //TODO other categories
+    public static double whatIfPoints(Player a, double minutes, String stat) {
+
+        double aStat;
+
+        if(stat.equals("PTS"))  aStat = a.PTS;
+
+        else if (stat.equals("MP")) aStat = a.MP;
+
+        else if (stat.equals("FG")) aStat = a.FG;
+
+        else if (stat.equals("FGA")) aStat = a.FGA;
+
+        else if (stat.equals("FGP")) aStat = a.FGP;
+
+        else if (stat.equals("threeP")) aStat = a.threeP;
+
+        else if (stat.equals("threePA")) aStat = a.threePA;
+
+        else if (stat.equals("threePP")) aStat = a.threePP;
+
+        else if (stat.equals("twoP")) aStat = a.twoP;
+
+        else if (stat.equals("twoPP")) aStat = a.twoPP;
+
+        else if (stat.equals("eFG")) aStat = a.eFG;
+
+        else if (stat.equals("FT")) aStat = a.FT;
+
+        else if (stat.equals("FTA")) aStat = a.FTA;
+
+        else if (stat.equals("FTP"))  aStat = a.FTP;
+
+        else if (stat.equals("ORB")) aStat = a.ORB;
+
+        else if (stat.equals("DRB")) aStat = a.DRB;
+
+        else if (stat.equals("TRB")) aStat = a.TRB;
+
+        else if (stat.equals("AST")) aStat = a.AST;
+
+        else if (stat.equals("STL")) aStat = a.STL;
+
+        else if (stat.equals("BLK")) aStat = a.BLK;
+
+        else if (stat.equals("TOV")) aStat = a.TOV;
+
+        else if (stat.equals("PF")) aStat = a.PF;
+
+        else if (stat.equals("PTS")) aStat = a.PTS;
+
+        else throw new IllegalArgumentException("not a supported stat");
+
+        return aStat / a.MP * minutes;
     }
 
-    public static Player compareFGA(Player a, Player b) {
+
+    //weighted comparison based on the 3 main categories
+    public static Player betterPlayer(Player aplayer, Player bplayer, double ptsWeight, double rebWeight, double astWeight) {
         Player winner;
-        if(a.FGA > b.FGA) winner = a;
-        else winner = b;
+        double aScore = aplayer.PTS*ptsWeight + aplayer.TRB*rebWeight + aplayer.AST+astWeight;
+        double bScore = bplayer.PTS*ptsWeight + bplayer.TRB*rebWeight + bplayer.AST+astWeight;
+        if(aScore > bScore) winner = aplayer;
+        else winner = bplayer;
         return winner;
     }
-
-    public static Player compareFGP(Player a, Player b) {
-        Player winner;
-        if(a.FGP > b.FGP) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    public static Player comparethreeP(Player a, Player b) {
-        Player winner;
-        if(a.threeP > b.threeP) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    public static Player comparethreePA(Player a, Player b) {
-        Player winner;
-        if(a.threePA > b.threePA) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    public static Player comparethreePP(Player a, Player b) {
-        Player winner;
-        if(a.threePP > b.threePP) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    public static Player comparetwoP(Player a, Player b) {
-        Player winner;
-        if(a.twoP > b.twoP) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    public static Player comparetwoPA(Player a, Player b) {
-        Player winner;
-        if(a.twoPA > b.twoPA) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    public static Player comparetwoPP(Player a, Player b) {
-        Player winner;
-        if(a.twoPP > b.twoPP) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    public static Player compareeFG(Player a, Player b) {
-        Player winner;
-        if(a.eFG > b.eFG) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    public static Player compareFT(Player a, Player b) {
-        Player winner;
-        if(a.FT > b.FT) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    public static Player compareFTA(Player a, Player b) {
-        Player winner;
-        if(a.FTA > b.FTA) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    public static Player compareFTP(Player a, Player b) {
-        Player winner;
-        if(a.FTP > b.FTP) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    public static Player compareORB(Player a, Player b) {
-        Player winner;
-        if(a.ORB > b.ORB) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    public static Player compareDRB(Player a, Player b) {
-        Player winner;
-        if(a.DRB > b.DRB) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    public static Player compareTRB(Player a, Player b) {
-        Player winner;
-        if(a.TRB > b.TRB) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    public static Player compareAST(Player a, Player b) {
-        Player winner;
-        if(a.AST > b.AST) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    public static Player compareSTL(Player a, Player b) {
-        Player winner;
-        if(a.STL > b.STL) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    public static Player compareBLK(Player a, Player b) {
-        Player winner;
-        if(a.BLK > b.BLK) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    public static Player compareTOV(Player a, Player b) {
-        Player winner;
-        if(a.TOV > b.TOV) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    public static Player comparePF(Player a, Player b) {
-        Player winner;
-        if(a.PF > b.PF) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    public static Player comparePTS(Player a, Player b) {
-        Player winner;
-        if(a.PTS > b.PTS) winner = a;
-        else winner = b;
-        return winner;
-    }
-
-    //more complex comparisons
-
-    //a generalized efficiency stat taking effective field goal percentage with other stats
-//    public static Player efficiencyComparison(Player a, Player b) {
-//        double aEfficiency = NBAHelpers.calculateEFG(a) * a.getFieldGoalAttempts()
-//                + 1.5 * a.getAssists() + .5 * a.getRebounds();
-//        double bEfficiency = NBAHelpers.calculateEFG(b) * b.getFieldGoalAttempts()
-//                + 1.5 * b.getAssists() + .5 * b.getRebounds();
-//
-//        Player winner = new Player();
-//
-//        if(aEfficiency > bEfficiency) winner = a;
-//        else winner = b;
-//        return winner;
-//    }
-
-    //how many ____ would they get in ____ minutes?
-
 }
