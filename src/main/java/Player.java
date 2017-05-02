@@ -1,5 +1,3 @@
-package com.company;
-
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -227,7 +225,7 @@ public class Player {
         return s.toString();
     }
 
-    public static HashMap<String, Player> readInPlayers() throws IOException {
+    public HashMap<String, Player> readInPlayers() throws IOException {
         HashMap<String,Player> playerDatabase =new HashMap<String, Player>();
         File resFolder = new File("./res");
 

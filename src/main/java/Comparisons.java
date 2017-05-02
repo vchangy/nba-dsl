@@ -1,16 +1,14 @@
-package com.company;
-
 /**
  * Created by franklong on 4/22/17.
  */
 public class Comparisons {
     //TODO this is a less dumb version that I should probably figure out, still some jank but it works
-    public static Player compareBasicStat(Player a, Player b, String stat) throws IllegalArgumentException {
+    public Player compareBasicStat(Player a, Player b, String stat) throws IllegalArgumentException {
         double aStat = 0;
         double bStat = 0;
         Player winner;
 
-        if(stat.equals("PTS")) {
+        if(stat.equals("points")) {
             aStat = a.PTS;
             bStat = b.PTS;
         }
@@ -90,27 +88,27 @@ public class Comparisons {
             bStat = b.DRB;
         }
 
-        else if (stat.equals("TRB")) {
+        else if (stat.equals("rebounds")) {
             aStat = a.TRB;
             bStat = b.TRB;
         }
 
-        else if (stat.equals("AST")) {
+        else if (stat.equals("assists")) {
             aStat = a.AST;
             bStat = b.AST;
         }
 
-        else if (stat.equals("STL")) {
+        else if (stat.equals("steals")) {
             aStat = a.STL;
             bStat = b.STL;
         }
 
-        else if (stat.equals("BLK")) {
+        else if (stat.equals("blocks")) {
             aStat = a.BLK;
             bStat = b.BLK;
         }
 
-        else if (stat.equals("TOV")) {
+        else if (stat.equals("turnovers")) {
             aStat = a.TOV;
             bStat = b.TOV;
         }
@@ -136,11 +134,11 @@ public class Comparisons {
 
     //what if <Player> played X minutes, how many points?
     //TODO other categories
-    public static double whatIfPoints(Player a, double minutes, String stat) {
+    public double whatIfPoints(Player a, double minutes, String stat) {
 
         double aStat;
 
-        if(stat.equals("PTS"))  aStat = a.PTS;
+        if(stat.equals("points"))  aStat = a.PTS;
 
         else if (stat.equals("MP")) aStat = a.MP;
 
@@ -172,15 +170,15 @@ public class Comparisons {
 
         else if (stat.equals("DRB")) aStat = a.DRB;
 
-        else if (stat.equals("TRB")) aStat = a.TRB;
+        else if (stat.equals("rebounds")) aStat = a.TRB;
 
-        else if (stat.equals("AST")) aStat = a.AST;
+        else if (stat.equals("assists")) aStat = a.AST;
 
-        else if (stat.equals("STL")) aStat = a.STL;
+        else if (stat.equals("steals")) aStat = a.STL;
 
-        else if (stat.equals("BLK")) aStat = a.BLK;
+        else if (stat.equals("blocks")) aStat = a.BLK;
 
-        else if (stat.equals("TOV")) aStat = a.TOV;
+        else if (stat.equals("turnovers")) aStat = a.TOV;
 
         else if (stat.equals("PF")) aStat = a.PF;
 
@@ -193,7 +191,7 @@ public class Comparisons {
 
 
     //weighted comparison based on the 3 main categories
-    public static Player betterPlayer(Player aplayer, Player bplayer, double ptsWeight, double rebWeight, double astWeight) {
+    public Player betterPlayer(Player aplayer, Player bplayer, double ptsWeight, double rebWeight, double astWeight) {
         Player winner;
         double aScore = aplayer.PTS*ptsWeight + aplayer.TRB*rebWeight + aplayer.AST+astWeight;
         double bScore = bplayer.PTS*ptsWeight + bplayer.TRB*rebWeight + bplayer.AST+astWeight;
